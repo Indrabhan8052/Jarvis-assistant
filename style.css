@@ -1,9 +1,9 @@
-*{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+body {
     height: 100%;
     width: 100%;
     background-color: black;
@@ -13,28 +13,35 @@ body{
     gap: 30px;
     flex-direction: column;
 }
-#logo{
+#logo {
     width: 20vw;
 }
-h1{
-    color: red;
+h1 {
+    color: #a5f7ff;
     font-size: 40px;
-    font-family: Georgia, 'Times New Roman',;
+    font-family: Georgia, 'Times New Roman', serif;
 }
-#voice{
+#voice {
     width: 200px;
     display: none;
 }
-
-#btn{
+#btn {
     width: 200px;
     height: 30px;
     border-radius: 25px;
-    background: linear-gradient(to right,red,rgb(47, 79, 593));
+    background: linear-gradient(to right, rgb(#7b67f0), rgb(#7b67f0));
     display: flex;
     align-items: center;
     font-size: 15px;
+    justify-content: center;
+    cursor: pointer;
 }
-#name,#va{
-    color: rgba(39, 97, 244, 0.982);
+#name, #va {
+    color: #00fffc;
+}
+#camera-feed {
+    display: none;
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
 }
