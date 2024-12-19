@@ -32,7 +32,7 @@ let recognition = new speechRecognition();
 recognition.onresult = (event) => {
     let currentIndex = event.resultIndex;
     let transcript = event.results[currentIndex][0].transcript;
-    content.innerText = transcript;
+    mic.innerText = transcript;
     takeCommand(transcript.toLowerCase());
 };
 
@@ -46,9 +46,9 @@ function takeCommand(message) {
     btn.style.display = "flex";
     voice.style.display = "none";
     if (message.includes("hello") || message.includes("hey")) {
-        speak("Hello sir, What can I help you with?");
+        speak("Hello sir, What can I help you");
     } else if (message.includes("who are you")) {
-        speak("I am Jarvis, created by Indra Bhan Verma");
+        speak("I am Jarvis, created by Indra Bhan Verma and Bhavesh Anand");
     } else if (message.includes("open youtube")) {
         speak("Opening YouTube...");
         window.open("http://www.youtube.com/", "_blank");
@@ -57,15 +57,15 @@ function takeCommand(message) {
         window.open("https://www.google.com/", "_blank");
     } else if (message.includes("open whatsapp")) {
         speak("Opening WhatsApp...");
-        window.open("https://www.whatsapp.com/", "_blank");
-    } else if (message.includes("open the camera")) {
-speak("Opening the camera...");
-window.location.href ="Camera.html"; // Navigate to PhoneCamera.html
+        window.open("https://web.whatsapp.com/", "_blank");
+    } else if (message.includes("open Camera")) {
+        speak("Opening camera...");
+        window.location.href ="Camera.html"; 
 }
 else if(message.includes("what is python")){
 speak("Python is an interpreted, object-oriented, high-level programming language with dynamic semantics.Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together. ")
 }
-else if(message.includes("what is JavaScript")){
+else if(message.includes("what is Java Script")){
     speak("JavaScript is a programming language that allows developers to create interactive web pages.")
     }
 else if(message.includes("what is neural network")){
