@@ -1,4 +1,4 @@
-  * {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -26,15 +26,17 @@ h1 {
     display: none;
 }
 #btn {
-    width: 200px;
-    height: 30px;
-    border-radius: 25px;
-    background: linear-gradient(to right, rgb(#7b67f0), rgb(#7b67f0));
+    width: 80px;
+    height: 80px;
+    border-radius:50% ;
+    background: linear-gradient( white
+    ,#7b67f0);
     display: flex;
     align-items: center;
     font-size: 15px;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 2px 2px #c9f4f8;
 }
 #name, #va {
     color: #00fffc;
@@ -44,4 +46,7 @@ h1 {
     width: 80%;
     height: auto;
     margin-top: 20px;
+}
+.content{
+    height: 50px;
 }
