@@ -1,4 +1,4 @@
-* {
+        * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,7 +17,7 @@ body {
     width: 20vw;
 }
 h1 {
-    color: red;
+    color: #a5f7ff;
     font-size: 40px;
     font-family: Georgia, 'Times New Roman', serif;
 }
@@ -26,22 +26,27 @@ h1 {
     display: none;
 }
 #btn {
-    width: 200px;
-    height: 30px;
-    border-radius: 25px;
-    background: linear-gradient(to right, red, rgb(47, 79, 593));
+    width: 80px;
+    height: 80px;
+    border-radius:50% ;
+    background: linear-gradient( white
+    ,#7b67f0);
     display: flex;
     align-items: center;
     font-size: 15px;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 2px 2px #c9f4f8;
 }
 #name, #va {
-    color: rgba(39, 97, 244, 0.982);
+    color: #00fffc;
 }
 #camera-feed {
     display: none;
     width: 80%;
     height: auto;
     margin-top: 20px;
+}
+.content{
+    height: 50px;
 }
