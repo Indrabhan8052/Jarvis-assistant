@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: column;
+}
+#logo {
+    width: 20vw;
+}
+h1 {
+    color: red;
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+#voice {
+    width: 200px;
+    display: none;
+}
+#btn {
+    width: 200px;
+    height: 30px;
+    border-radius: 25px;
+    background: linear-gradient(to right, red, rgb(47, 79, 593));
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    justify-content: center;
+    cursor: pointer;
+}
+#name, #va {
+    color: rgba(39, 97, 244, 0.982);
+}
+#camera-feed {
+    display: none;
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+}

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Camera</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <video id="videoElement" autoplay playsinline></video>
+    <script>
+        const video = document.getElementById("videoElement");
+
+        // Access the camera
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: "environment" // Use the back camera
+            }
+        })
+        .then((stream) => {
+            video.srcObject = stream;
+        })
+        .catch((error) => {
+            console.error("Error accessing camera:", error);
+            alert("Unable to access the camera. Please check your browser permissions.");
+        });
+    </script>
+</body>
+</html>
