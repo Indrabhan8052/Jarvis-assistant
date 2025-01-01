@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background-color: black;
     display: flex;
@@ -14,7 +14,7 @@ body {
     flex-direction: column;
 }
 #logo {
-    width: 20vw;
+    width: 25%;
 }
 h1 {
     color: #a5f7ff;
@@ -29,14 +29,12 @@ h1 {
     width: 80px;
     height: 80px;
     border-radius:50% ;
-    background: linear-gradient( white
-    ,#7b67f0);
     display: flex;
     align-items: center;
     font-size: 15px;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 2px 2px #c9f4f8;
+    /* box-shadow: 2px 2px #c9f4f8; */
 }
 #name, #va {
     color: #00fffc;
@@ -50,3 +48,32 @@ h1 {
 .content{
     height: 50px;
 }
+@media only screen and (max-width:480px) {
+    #logo{
+        width:50%
+    }
+    
+}
+h1, span{
+    position: relative;
+    animation: myfirst 10s linear 2s infinite alternate;
+  }
+  
+  @keyframes myfirst {
+    0%   {color:red; }
+    25%  {color:white; }
+    50%  {color:#73fffe; }
+    75%  {color:yellow; }
+    100% {color:#6287f8; }
+  }
+  button{
+    position: relative;
+    animation: second 10s linear 2s infinite alternate;
+  }
+  @keyframes second {
+    0%   {background-color:red; }
+    25%  {background-color:white; }
+    50%  {background-color:#73fffe; }
+    75%  {background-color:yellow; }
+    100% {background-color:#6287f8; }
+  }
