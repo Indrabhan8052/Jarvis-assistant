@@ -308,3 +308,103 @@ body {
   .brand-name { letter-spacing: 1.5px; font-size: 12px; }
   .orb { width: 76px; height: 76px; }
 }
+
+/* ---------- explore panel (in-app browser for unexplainable queries) ---------- */
+.explore {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform .28s ease;
+}
+.explore.open { transform: translateY(0); }
+
+.explore-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: calc(12px + var(--safe-top)) 12px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.explore-back, .explore-open {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.explore-back svg, .explore-open svg { width: 16px; height: 16px; fill: var(--text-muted); }
+.explore-back:hover, .explore-open:hover { border-color: var(--cyan); }
+.explore-query {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.explore-body {
+  position: relative;
+  flex: 1;
+  background: #fff;
+}
+.explore-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.explore-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.spinner {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--cyan);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.explore-blocked {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+.explore-blocked button {
+  background: linear-gradient(135deg, var(--cyan), #0a8fa8);
+  color: #06070c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
