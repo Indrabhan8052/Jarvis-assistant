@@ -9,8 +9,19 @@ const textInput = document.querySelector("#textInput");
 const camBtn = document.querySelector("#camBtn");
 const cameraFeed = document.querySelector("#camera-feed");
 
+const explorePanel = document.querySelector("#explorePanel");
+const exploreFrame = document.querySelector("#exploreFrame");
+const exploreQueryEl = document.querySelector("#exploreQuery");
+const exploreLoading = document.querySelector("#exploreLoading");
+const exploreBlocked = document.querySelector("#exploreBlocked");
+const exploreClose = document.querySelector("#exploreClose");
+const exploreOpenExternal = document.querySelector("#exploreOpenExternal");
+const exploreBlockedOpen = document.querySelector("#exploreBlockedOpen");
+
 let voiceEnabled = true;
 let cameraStream = null;
+let exploreExternalUrl = "";
+let exploreTimeoutId = null;
 
 /* ===================== clock ===================== */
 function tickClock() {
@@ -154,6 +165,43 @@ camBtn.addEventListener("click", () => {
   cameraFeed.classList.contains("active") ? closeCamera() : openCamera();
 });
 
+/* ===================== explore panel (in-app browser) ===================== */
+// Wikipedia embeds cleanly (no framing block); Google/DuckDuckGo results pages
+// refuse to render inside an iframe by design, so that's the in-app source.
+// The "open in browser" button always gives the real, full search instead.
+function exploreQuery(query) {
+  const wikiUrl = `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(query)}&fulltext=1`;
+  const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+  exploreExternalUrl = googleUrl;
+  exploreQueryEl.textContent = query;
+
+  exploreLoading.hidden = false;
+  exploreBlocked.hidden = true;
+  exploreFrame.src = wikiUrl;
+  explorePanel.classList.add("open");
+
+  clearTimeout(exploreTimeoutId);
+  exploreTimeoutId = setTimeout(() => {
+    exploreLoading.hidden = true;
+    exploreBlocked.hidden = false;
+  }, 4000);
+}
+
+exploreFrame.addEventListener("load", () => {
+  clearTimeout(exploreTimeoutId);
+  exploreLoading.hidden = true;
+});
+
+function closeExplore() {
+  explorePanel.classList.remove("open");
+  clearTimeout(exploreTimeoutId);
+  setTimeout(() => { exploreFrame.src = "about:blank"; }, 300);
+}
+
+exploreClose.addEventListener("click", closeExplore);
+exploreOpenExternal.addEventListener("click", () => window.open(exploreExternalUrl, "_blank"));
+exploreBlockedOpen.addEventListener("click", () => window.open(exploreExternalUrl, "_blank"));
+
 /* ===================== commands ===================== */
 // Each entry: { test: (msg) => bool, run: (msg) => void }
 const commands = [
@@ -248,8 +296,8 @@ function takeCommand(message) {
     match.run(message);
     return;
   }
-  speak(`Here's what I found on the web for "${message}".`);
-  window.open(`https://www.google.com/search?q=${encodeURIComponent(message)}`, "_blank");
+  speak(`I don't have that one built in — let me pull it up for you.`);
+  exploreQuery(message);
 }
 
 /* ===================== PWA service worker ===================== */
