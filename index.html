@@ -1,19 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jarvis</title>
-    <link rel="shortcut icon" href="Jarvis.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<title>JARVIS</title>
+<meta name="description" content="JARVIS — your personal voice assistant">
+<meta name="theme-color" content="#06070C">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="video.gif" alt="logo" id="logo">
-    <h1>I am <span id="name">Jarvis</span>, your <span id="va">virtual assistant</span></h1>
-    <img src="voice.gif" alt="voice" id="voice"> 
-    <!-- <button id="btn"><img class="cotent" src="mic.svg"></button> -->
-    <button id="btn"><img src="mic.svg"><span id="content">.</span></button>
-    <video id="camera-feed" autoplay></video>
-    </body>
-    <script src="script.js"></script>
+
+<div class="phone">
+
+  <!-- status bar -->
+  <header class="statusbar">
+    <span class="clock" id="clock">00:00</span>
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">JARVIS</span>
+    </div>
+    <button class="icon-btn" id="muteBtn" aria-label="Toggle voice reply" title="Toggle voice reply">
+      <svg viewBox="0 0 24 24" id="muteIcon"><path d="M4 9v6h4l5 5V4L8 9H4z"/></svg>
+    </button>
+  </header>
+
+  <!-- orb avatar -->
+  <div class="orb-wrap">
+    <div class="orb" id="orb">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="core"></div>
+    </div>
+    <p class="orb-state" id="orbState">Tap the mic and say something</p>
+  </div>
+
+  <!-- conversation feed -->
+  <main class="feed" id="feed" aria-live="polite"></main>
+
+  <!-- composer -->
+  <footer class="composer">
+    <button class="chip" id="camBtn" title="Open camera">
+      <svg viewBox="0 0 24 24"><path d="M9 2 7.2 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.2L15 2H9zm3 6a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
+    </button>
+    <input type="text" id="textInput" placeholder="Message JARVIS…" autocomplete="off">
+    <button class="mic-btn" id="btn" aria-label="Start listening">
+      <svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2z"/></svg>
+    </button>
+  </footer>
+
+  <video id="camera-feed" autoplay playsinline></video>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
